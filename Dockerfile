@@ -92,16 +92,16 @@ RUN \
   rm -rf /var/cache/apt/*
 
 RUN \
-  mkdir /opt/automl
+  mkdir /opt/h2o3-automl
 
 # Install automl, copy the files to the root of the git repo
-COPY h2o-*-py2.py3-none-any.whl /opt/automl
-COPY steam-automl-1.5.99999-SNAPSHOT.jar /opt/automl/automl.jar
+COPY h2o-*-py2.py3-none-any.whl /opt/h2o3-automl
+COPY steam-automl-1.5.99999-SNAPSHOT.jar /opt/h2o3-automl/automl.jar
 COPY ./scripts/start-automl.sh /opt/start-automl.sh
 
 RUN \
   /usr/bin/pip3 install --upgrade pip && \
-  /usr/bin/pip3 install /opt/automl/h2o-*-py2.py3-none-any.whl && \
+  /usr/bin/pip3 install /opt/h2o3-automl/h2o-*-py2.py3-none-any.whl && \
   chmod +x /opt/start-automl.sh
 
 EXPOSE 54321
